@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfptdladnalc1"]
+
+[ext_resource type="Script" path="res://Canopy.gd" id="1_o3ecl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2lacd"]
+size = Vector3(5.18532, 0.131296, 2.73344)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1psa5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l6g43"]
+size = Vector3(4.08461, 2.52082, 2.22859)
+
+[node name="Canopy" type="StaticBody3D"]
+script = ExtResource("1_o3ecl")
+
+[node name="HitBox" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.47953, 0)
+shape = SubResource("BoxShape3D_2lacd")
+
+[node name="CanopyMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(5.16587, 0, 0, 0, 0.132264, 0, 0, 0, 2.72599, 0, 2.47891, 0)
+mesh = SubResource("BoxMesh_1psa5")
+
+[node name="ShadeCollision" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShadeCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23666, 0)
+shape = SubResource("BoxShape3D_l6g43")
+
+[connection signal="body_entered" from="ShadeCollision" to="." method="_on_shade_collision_body_entered"]
+[connection signal="body_exited" from="ShadeCollision" to="." method="_on_shade_collision_body_exited"]
