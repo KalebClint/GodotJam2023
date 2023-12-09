@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cfptdladnalc1"]
 
-[ext_resource type="Script" path="res://Canopy.gd" id="1_o3ecl"]
+[ext_resource type="Script" path="res://Scripts/Canopy.gd" id="1_mhlmg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2lacd"]
 size = Vector3(5.18532, 0.131296, 2.73344)
@@ -11,7 +11,7 @@ size = Vector3(5.18532, 0.131296, 2.73344)
 size = Vector3(4.08461, 2.52082, 2.22859)
 
 [node name="Canopy" type="StaticBody3D"]
-script = ExtResource("1_o3ecl")
+script = ExtResource("1_mhlmg")
 
 [node name="HitBox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.47953, 0)

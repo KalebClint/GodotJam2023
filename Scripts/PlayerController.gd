@@ -5,6 +5,8 @@ extends CharacterBody3D
 
 
 var underShade = false
+var sunAbove = false
+
 var illBar = 0
 
 const SPEED = 5.0
@@ -21,7 +23,7 @@ func _physics_process(delta):
 	
 	#If it is daytime, check if the player is under shade. If not increase Ill bar
 	if GameManager.daytime:
-		if !underShade:
+		if !underShade && sunAbove:
 			illBar += 0.13
 			if illBar >= 100:
 				#Kill The Player
@@ -57,3 +59,12 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+
+func _on_sun_collider_body_entered(body):
+	if body.name == "Player":
+		sunAbove = true
+
+
+func _on_sun_collider_body_exited(body):
+	if body.name == "Player":
+		sunAbove = false
