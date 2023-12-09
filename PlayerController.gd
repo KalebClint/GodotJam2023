@@ -1,7 +1,11 @@
 extends CharacterBody3D
 
 @onready var characterMesh = $Mesh
+@onready var GameManager = $".."
 
+
+var underShade = false
+var illBar = 0
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -10,13 +14,29 @@ const JUMP_VELOCITY = 4.5
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	pass
 
 func _physics_process(delta):
+	
+	#If it is daytime, check if the player is under shade. If not increase Ill bar
+	if GameManager.daytime:
+		if !underShade:
+			illBar += 0.13
+			if illBar >= 100:
+				#Kill The Player
+				illBar = 0
+				position.x = 1
+				position.y = 0
+				position.z = 7
+				
+			print(illBar)
+
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-
+		
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
