@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://biwp4yifu2qgc"]
 
-[ext_resource type="Script" path="res://PlayerController.gd" id="1_qycyh"]
+[ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_4xioi"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_8syjv"]
 
@@ -11,7 +11,7 @@ size = Vector3(1.00665, 1.96031, 0.626439)
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.246968)
-script = ExtResource("1_qycyh")
+script = ExtResource("1_4xioi")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.94477, 0, 0, 0, 0.632187, 0, 1.05446, -0.0180049)
