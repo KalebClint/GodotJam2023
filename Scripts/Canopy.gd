@@ -1,6 +1,7 @@
 extends StaticBody3D
 
-@onready var player = $"../../Player"
+@onready var player = $"../Player"
+
 
 @onready var gameManager = $"../.."
 

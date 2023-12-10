@@ -1,120 +1,47 @@
-[gd_scene load_steps=13 format=3 uid="uid://bepgm0dbx3npf"]
+[gd_scene load_steps=8 format=3 uid="uid://bepgm0dbx3npf"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_8s3hp"]
 [ext_resource type="PackedScene" uid="uid://biwp4yifu2qgc" path="res://Assets/Player/player.tscn" id="1_q62dl"]
+[ext_resource type="Script" path="res://Scenes/MapGenerator.gd" id="2_wu0wb"]
 [ext_resource type="Script" path="res://Scripts/CameraMovement.gd" id="3_0grrj"]
 [ext_resource type="PackedScene" uid="uid://cfptdladnalc1" path="res://Assets/canopy.tscn" id="3_pkvpp"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u15et"]
-albedo_color = Color(0.207843, 0.2, 0.203922, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_qju87"]
-material = SubResource("StandardMaterial3D_u15et")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_3of4a"]
-size = Vector3(24, 0.378647, 41.9976)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_0wnbh"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_xgh11"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_vke73"]
-size = Vector3(1.03812, 8.83496, 22.547)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ku2b0"]
+[ext_resource type="PackedScene" uid="uid://bij0nfdcikeje" path="res://Assets/Map/segment_one.tscn" id="6_ge570"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y2f1b"]
-size = Vector3(16.5081, 6.10358, 18.6762)
+size = Vector3(57.6013, 47.5948, 21.6971)
 
 [node name="GameManager" type="Node3D"]
 script = ExtResource("1_8s3hp")
 
-[node name="TestMap" type="Node3D" parent="."]
+[node name="MapGenerator" type="Node3D" parent="."]
+script = ExtResource("2_wu0wb")
 
-[node name="Ground" type="StaticBody3D" parent="TestMap"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="TestMap/Ground"]
-transform = Transform3D(13.1405, 0, 0, 0, 0.18769, 0, 0, 0, 23.1629, 0.00720501, 0.209498, -0.0622272)
-mesh = SubResource("BoxMesh_qju87")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TestMap/Ground"]
-transform = Transform3D(0.551045, 0, 0, 0, 0.551045, 0, 0, 0, 0.551045, 0, 0.2, 0)
-shape = SubResource("BoxShape3D_3of4a")
-
-[node name="Boxes" type="Node3D" parent="TestMap"]
-
-[node name="Box" type="StaticBody3D" parent="TestMap/Boxes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.93944, 0.845369, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TestMap/Boxes/Box"]
-shape = SubResource("BoxShape3D_0wnbh")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="TestMap/Boxes/Box"]
-mesh = SubResource("BoxMesh_xgh11")
-
-[node name="Box2" type="StaticBody3D" parent="TestMap/Boxes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45676, 0.845369, 8.46025)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TestMap/Boxes/Box2"]
-shape = SubResource("BoxShape3D_0wnbh")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="TestMap/Boxes/Box2"]
-mesh = SubResource("BoxMesh_xgh11")
-
-[node name="Box3" type="StaticBody3D" parent="TestMap/Boxes"]
-transform = Transform3D(1, 0, 0, 0, -0.998428, -0.056048, 0, 0.056048, -0.998428, -0.807704, 0.845369, -7.60682)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TestMap/Boxes/Box3"]
-shape = SubResource("BoxShape3D_0wnbh")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="TestMap/Boxes/Box3"]
-mesh = SubResource("BoxMesh_xgh11")
-
-[node name="Wall" type="StaticBody3D" parent="TestMap"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.35895, 1.0801, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TestMap/Wall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.499634, 3.84725, 0)
-shape = SubResource("BoxShape3D_vke73")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="TestMap/Wall"]
-transform = Transform3D(1, 0, 0, 0, 8.90002, 0, 0, 0, 23.1872, -0.502284, 3.85885, 0)
-mesh = SubResource("BoxMesh_ku2b0")
-
-[node name="Wall2" type="StaticBody3D" parent="TestMap"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.37965, 1.0801, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TestMap/Wall2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.499634, 3.84725, 0)
-shape = SubResource("BoxShape3D_vke73")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="TestMap/Wall2"]
-transform = Transform3D(1, 0, 0, 0, 8.90002, 0, 0, 0, 24.3384, -0.502284, 3.85885, 0)
-mesh = SubResource("BoxMesh_ku2b0")
-
-[node name="Canopy" parent="TestMap" instance=ExtResource("3_pkvpp")]
+[node name="Canopy" parent="." instance=ExtResource("3_pkvpp")]
 transform = Transform3D(0.0198256, 0, -0.999803, 0, 1, 0, 0.999803, 0, 0.0198256, 5.22291, 0.518024, 1.27642)
+visible = false
 
-[node name="ShadeCollision" parent="TestMap/Canopy" index="2"]
+[node name="ShadeCollision" parent="Canopy" index="2"]
 transform = Transform3D(0.999999, 0, -7.45058e-09, 0, 1, 0, 7.45058e-09, 0, 0.999999, 1.12427, 0, 0.870164)
 
-[node name="CollisionShape3D" parent="TestMap/Canopy/ShadeCollision" index="0"]
+[node name="CollisionShape3D" parent="Canopy/ShadeCollision" index="0"]
 transform = Transform3D(1, 0, 3.72529e-09, 0, 1, 0, -3.72529e-09, 0, 1, -1.08889, 1.23666, -0.951041)
 
-[node name="Canopy2" parent="TestMap" instance=ExtResource("3_pkvpp")]
+[node name="Canopy2" parent="." instance=ExtResource("3_pkvpp")]
 transform = Transform3D(-0.0288463, 0, 0.999584, 0, 1, 0, -0.999584, 0, -0.0288463, -5.00859, 0.518024, -7.45434)
+visible = false
 
-[node name="CanopyMesh" parent="TestMap/Canopy2" index="1"]
+[node name="CanopyMesh" parent="Canopy2" index="1"]
 transform = Transform3D(5.16587, 0, -2.23517e-08, 0, 0.132264, 0, 1.49012e-08, 0, 2.72599, 0.00649452, 2.47891, -0.225056)
 
-[node name="ShadeCollision" parent="TestMap/Canopy2" index="2"]
+[node name="ShadeCollision" parent="Canopy2" index="2"]
 transform = Transform3D(0.999999, 0, -7.45058e-09, 0, 1, 0, 7.45058e-09, 0, 0.999999, 1.12427, 0, 0.870164)
 
-[node name="CollisionShape3D" parent="TestMap/Canopy2/ShadeCollision" index="0"]
+[node name="CollisionShape3D" parent="Canopy2/ShadeCollision" index="0"]
 transform = Transform3D(1, 0, 3.72529e-09, 0, 1, 0, -3.72529e-09, 0, 1, -1.08889, 1.23666, -0.951041)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.845746, 0.533585, 0, -0.533585, 0.845746, 0, 4.10268, 10.6443)
+transform = Transform3D(1, 0, 0, 0, 0.845746, 0.533585, 0, -0.533585, 0.845746, 0, 5.5255, 13.9166)
+fov = 100.0
 script = ExtResource("3_0grrj")
 
 [node name="ShadeLeft" type="Node3D" parent="Camera3D"]
@@ -124,21 +51,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.78039, 4.24583, -9.90699)
 transform = Transform3D(1, 0, 0, 0, 0.845746, -0.533585, 0, 0.533585, 0.845746, 9.54659, 4.24583, -9.90699)
 
 [node name="Player" parent="." instance=ExtResource("1_q62dl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00315, 0, 7.08691)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46872, 0.988534, 6.86756)
 
-[node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.125177, 4.33675e-08, -0.992134, 0.992134, 5.47168e-09, -0.125177, 6.17486e-15, -1, -4.37113e-08, 0, 14.3329, 0)
+[node name="SUNSTUFF" type="Node3D" parent="."]
+
+[node name="SunSpawn" type="Node3D" parent="SUNSTUFF"]
+transform = Transform3D(0.629795, 3.39533e-08, -0.776761, 0.776761, -2.75292e-08, 0.629795, 9.37009e-15, -1, -4.37113e-08, 0, 14.3329, 0)
+
+[node name="Sun" type="DirectionalLight3D" parent="SUNSTUFF"]
+transform = Transform3D(0.629795, 3.39533e-08, -0.776761, 0.776761, -2.75292e-08, 0.629795, 8.23776e-15, -1, -4.37113e-08, 0, 14.3329, 0)
 shadow_enabled = true
 
-[node name="SunCollider" type="Area3D" parent="Sun"]
-transform = Transform3D(-0.0388763, 0.999244, -1.09511e-14, 4.36783e-08, 1.69932e-09, -1, -0.999244, -0.0388763, -4.37114e-08, -11.6523, 5.63852e-06, 1.9109)
+[node name="sunColliderMove" type="Node3D" parent="SUNSTUFF"]
+transform = Transform3D(0.629795, 3.39533e-08, -0.776761, 0.776761, -2.75292e-08, 0.629795, 8.23776e-15, -1, -4.37113e-08, 0, 14.3329, 0)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Sun/SunCollider"]
-transform = Transform3D(-0.0410213, -0.999158, -4.03393e-15, 0.999158, -0.0410213, 6.84005e-15, 7.2877e-17, 1.77486e-15, 1, 12.0274, 12.2145, 3.15359)
+[node name="SunCollider" type="Area3D" parent="SUNSTUFF/sunColliderMove"]
+transform = Transform3D(-0.775837, 0.630933, -6.48304e-14, 2.75789e-08, 3.39129e-08, -1, -0.630933, -0.775837, -4.37114e-08, -6.26316, 5.2845e-06, 10.01)
+
+[node name="Suncollision" type="CollisionShape3D" parent="SUNSTUFF/sunColliderMove/SunCollider"]
+transform = Transform3D(-0.0410214, -0.999158, -4.03394e-15, 0.999158, -0.0410214, 6.84006e-15, 7.28787e-17, 1.77485e-15, 1, 12.1156, 58.6375, 3.15359)
 shape = SubResource("BoxShape3D_y2f1b")
 
-[connection signal="body_entered" from="Sun/SunCollider" to="Player" method="_on_sun_collider_body_entered"]
-[connection signal="body_exited" from="Sun/SunCollider" to="Player" method="_on_sun_collider_body_exited"]
+[node name="segmentOne" parent="." instance=ExtResource("6_ge570")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 
-[editable path="TestMap/Canopy"]
-[editable path="TestMap/Canopy2"]
+[connection signal="body_entered" from="SUNSTUFF/sunColliderMove/SunCollider" to="Player" method="_on_sun_collider_body_entered"]
+[connection signal="body_exited" from="SUNSTUFF/sunColliderMove/SunCollider" to="Player" method="_on_sun_collider_body_exited"]
+
+[editable path="Canopy"]
+[editable path="Canopy2"]

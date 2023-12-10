@@ -7,14 +7,14 @@
 [sub_resource type="SphereMesh" id="SphereMesh_dg28l"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ont3d"]
-size = Vector3(1.00665, 1.96031, 0.626439)
+size = Vector3(1.68479, 2.90531, 0.859452)
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.246968)
 script = ExtResource("1_4xioi")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1.94477, 0, 0, 0, 0.632187, 0, 1.05446, -0.0180049)
+transform = Transform3D(1.6518, 0, 0, 0, 2.91598, 0, 0, 0, 0.81132, 0, 1.05446, -0.0180049)
 mesh = SubResource("BoxMesh_8syjv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh"]
