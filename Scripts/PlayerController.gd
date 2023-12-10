@@ -4,6 +4,7 @@ extends CharacterBody3D
 @onready var GameManager = $".."
 
 
+
 var underShade = false
 var sunAbove = false
 
@@ -63,7 +64,6 @@ func _physics_process(delta):
 func _on_sun_collider_body_entered(body):
 	if body.name == "Player":
 		sunAbove = true
-
 
 func _on_sun_collider_body_exited(body):
 	if body.name == "Player":
