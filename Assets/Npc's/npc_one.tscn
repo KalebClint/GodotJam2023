@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://db7uwqwqtbxoe"]
+
+[ext_resource type="Script" path="res://Scripts/npcOne.gd" id="1_l6pnl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ngofm"]
+albedo_color = Color(0.521569, 0.741176, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_drb2r"]
+material = SubResource("StandardMaterial3D_ngofm")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_osfl4"]
+
+[node name="NPC_one" type="CharacterBody3D" groups=["NPC"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.947991, 0)
+script = ExtResource("1_l6pnl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_drb2r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_osfl4")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 2.0
+target_desired_distance = 2.0
+agent_height_offset = 0.1
+path_max_distance = 4.01
+avoidance_enabled = true
+
+[connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
