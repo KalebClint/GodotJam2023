@@ -3,15 +3,13 @@ extends CharacterBody3D
 @onready var characterMesh = $Mesh
 @onready var GameManager = $".."
 
-
-
 var underShade = false
 var sunAbove = false
 
 var illBar = 0
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+const SPEED = 7.5
+const JUMP_VELOCITY = 5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -25,7 +23,7 @@ func _physics_process(delta):
 	#If it is daytime, check if the player is under shade. If not increase Ill bar
 	if GameManager.daytime:
 		if !underShade && sunAbove:
-			illBar += 0.13
+			#illBar += 0.13
 			if illBar >= 100:
 				#Kill The Player
 				illBar = 0
@@ -33,7 +31,7 @@ func _physics_process(delta):
 				position.y = 0
 				position.z = 7
 				
-			print(illBar)
+			#print(illBar)
 
 	
 	# Add the gravity.
