@@ -2,7 +2,8 @@ extends Node3D
 
 @onready var player = $"../Player"
 
-@onready var originalLevel = $"../NavigationRegion3D/segmentOne"
+@onready var segment = $"../NavigationRegion3D/segmentOne"
+
 
 var pos = 0
 
@@ -18,12 +19,19 @@ func _physics_process(delta):
 func _ready():
 	_on_spawntime_timeout()
 
+func pickSegment():
+	var rand = randi_range(1,2)
+	if rand == 1:
+		segment = $"../NavigationRegion3D/segmentOne"
+	elif rand == 2:
+		pass
+
 func _on_spawntime_timeout():
 	rng.randomize()
 	var levelInstance: Node3D
 	var levelInstance2: Node3D
 	var randomValue = rng.randf()
-	levelInstance = originalLevel.duplicate()
+	levelInstance = segment.duplicate()
 	levelInstance.transform.origin.z -= totalDuplicationDistance + firstDuplicationDistance
 	add_child(levelInstance)
 	totalDuplicationDistance += 84

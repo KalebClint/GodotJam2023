@@ -1,6 +1,9 @@
 extends CharacterBody3D
 
-@onready var characterMesh = $Mesh
+@onready var characterMesh = $VampireMesh
+
+@onready var theTree = $AnimationTree
+
 @onready var GameManager = $".."
 
 var underShade = false
@@ -8,7 +11,13 @@ var sunAbove = false
 
 var illBar = 0
 
-const SPEED = 7.5
+var maxStanima = 10
+var stanima = 10
+
+var sprinting = true
+var tired = false
+
+var SPEED = 7.5
 const JUMP_VELOCITY = 5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -19,6 +28,34 @@ func _ready():
 	pass
 
 func _physics_process(delta):
+	
+	print(stanima)
+	if Input.is_action_pressed("shift") && stanima > 0 && !tired:
+		sprinting = true
+	else:
+		sprinting = false
+		
+	if !sprinting:
+		SPEED = 7.5
+		
+	if Input.is_action_just_released("shift"):
+		sprinting = false
+		
+	if sprinting == true:
+		SPEED = 10
+		stanima -= 0.05
+		
+		if stanima <= 0:
+			tired = true
+			sprinting = false
+			
+	else:
+		if stanima < 10:
+			stanima += 0.03
+			
+	if stanima >= 10:
+		tired = false
+			
 	
 	#If it is daytime, check if the player is under shade. If not increase Ill bar
 	if GameManager.daytime:
@@ -32,7 +69,6 @@ func _physics_process(delta):
 				position.z = 7
 				
 			#print(illBar)
-
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -47,16 +83,24 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("a_key", "d_key", "w_key", "s_key")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
+		
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 		
-		characterMesh.look_at(position + direction)
+		characterMesh.look_at(position - direction)
 		characterMesh.rotation.x = 0
 		
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
+	if input_dir == Vector2.ZERO && is_on_floor():
+		sprinting = false
+
+	$AnimationTree.set("parameters/conditions/idle", input_dir == Vector2.ZERO && is_on_floor())
+	$AnimationTree.set("parameters/conditions/walk", !sprinting && input_dir != Vector2.ZERO && is_on_floor())
+	$AnimationTree.set("parameters/conditions/run", sprinting && is_on_floor())
+	$AnimationTree.set("parameters/conditions/jump", !is_on_floor())
 	move_and_slide()
 
 func _on_sun_collider_body_entered(body):
