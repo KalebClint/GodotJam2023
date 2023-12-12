@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://qohavmauts8"
+path="res://.godot/imported/GWJ64SFX_Animals, Rodent, Mouse, Squeak 01 SND37593_003.ogg-2e1faf3316c383cd7a3881d6c9679a74.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/BatSFX/GWJ64SFX_Animals, Rodent, Mouse, Squeak 01 SND37593_003.ogg"
+dest_files=["res://.godot/imported/GWJ64SFX_Animals, Rodent, Mouse, Squeak 01 SND37593_003.ogg-2e1faf3316c383cd7a3881d6c9679a74.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
