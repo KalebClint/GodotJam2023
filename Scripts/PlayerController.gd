@@ -11,6 +11,8 @@ var sunAbove = false
 
 var illBar = 0
 
+var Health = 80
+
 var maxStanima = 10
 var stanima = 10
 
@@ -29,7 +31,6 @@ func _ready():
 
 func _physics_process(delta):
 	
-	print(stanima)
 	if Input.is_action_pressed("shift") && stanima > 0 && !tired:
 		sprinting = true
 	else:
@@ -79,7 +80,6 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("a_key", "d_key", "w_key", "s_key")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -110,3 +110,6 @@ func _on_sun_collider_body_entered(body):
 func _on_sun_collider_body_exited(body):
 	if body.name == "Player":
 		sunAbove = false
+
+func healPlayer():
+	Health += 20

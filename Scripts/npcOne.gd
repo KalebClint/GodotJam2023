@@ -36,8 +36,6 @@ func _physics_process(delta):
 	
 	navAgent.set_velocity(newVelocity)
 	
-
-	
 func updateTargetLocation(targetLoc):
 	if targetLoc != null:
 		navAgent.target_position = targetLoc
