@@ -1,12 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bepgm0dbx3npf"]
+[gd_scene load_steps=9 format=3 uid="uid://bepgm0dbx3npf"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_8s3hp"]
 [ext_resource type="PackedScene" uid="uid://biwp4yifu2qgc" path="res://Assets/Player/player.tscn" id="1_q62dl"]
 [ext_resource type="Script" path="res://Scripts/Navmesh.gd" id="2_mtq23"]
 [ext_resource type="Script" path="res://Scripts/CameraMovement.gd" id="3_0grrj"]
-[ext_resource type="Script" path="res://Assets/Map/mapSegment.gd" id="4_1evyf"]
+[ext_resource type="PackedScene" uid="uid://6urbpyos21e6" path="res://Assets/Map/better/segment1_tscn/segment 1.tscn" id="3_o7351"]
 [ext_resource type="Script" path="res://Scripts/MapGenerator.gd" id="4_kgdsm"]
-[ext_resource type="PackedScene" uid="uid://bij0nfdcikeje" path="res://Assets/Map/segment_one.tscn" id="6_ge570"]
 [ext_resource type="PackedScene" uid="uid://b68liv8bm81gr" path="res://Assets/PowerUps/bat.tscn" id="8_4n7f1"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_fyp2n"]
@@ -17,9 +16,6 @@ agent_height = 1.0
 agent_radius = 0.7
 agent_max_climb = 0.5
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_y2f1b"]
-size = Vector3(57.6013, 47.5948, 21.6971)
-
 [node name="GameManager" type="Node3D"]
 script = ExtResource("1_8s3hp")
 
@@ -27,9 +23,8 @@ script = ExtResource("1_8s3hp")
 navigation_mesh = SubResource("NavigationMesh_fyp2n")
 script = ExtResource("2_mtq23")
 
-[node name="segmentOne" parent="NavigationRegion3D" instance=ExtResource("6_ge570")]
+[node name="Segment One" parent="NavigationRegion3D" instance=ExtResource("3_o7351")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
-script = ExtResource("4_1evyf")
 
 [node name="MapGenerator" type="Node3D" parent="."]
 script = ExtResource("4_kgdsm")
@@ -53,25 +48,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23797, 2.10394, 0)
 
 [node name="SUNSTUFF" type="Node3D" parent="."]
 
-[node name="SunSpawn" type="Node3D" parent="SUNSTUFF"]
-transform = Transform3D(0.629795, 3.39533e-08, -0.776761, 0.776761, -2.75292e-08, 0.629795, 9.37009e-15, -1, -4.37113e-08, 0, 14.3329, 0)
-
-[node name="Sun" type="DirectionalLight3D" parent="SUNSTUFF"]
-transform = Transform3D(0.629795, 3.39533e-08, -0.776761, 0.776761, -2.75292e-08, 0.629795, 8.23776e-15, -1, -4.37113e-08, 0, 14.3329, 0)
+[node name="Sun" type="OmniLight3D" parent="SUNSTUFF"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.32955, 4.13617, -47.0755)
+light_energy = 30.0
 shadow_enabled = true
-
-[node name="sunColliderMove" type="Node3D" parent="SUNSTUFF"]
-transform = Transform3D(0.629795, 3.39533e-08, -0.776761, 0.776761, -2.75292e-08, 0.629795, 8.23776e-15, -1, -4.37113e-08, 0, 14.3329, 0)
-
-[node name="SunCollider" type="Area3D" parent="SUNSTUFF/sunColliderMove"]
-transform = Transform3D(-0.775837, 0.630933, -6.48304e-14, 2.75789e-08, 3.39129e-08, -1, -0.630933, -0.775837, -4.37114e-08, -6.26316, 5.2845e-06, 10.01)
-
-[node name="Suncollision" type="CollisionShape3D" parent="SUNSTUFF/sunColliderMove/SunCollider"]
-transform = Transform3D(-0.0410214, -0.999158, -4.03394e-15, 0.999158, -0.0410214, 6.84006e-15, 7.28787e-17, 1.77485e-15, 1, 12.1156, 58.6375, 3.15359)
-shape = SubResource("BoxShape3D_y2f1b")
+omni_range = 23.4312
+omni_attenuation = 1.46409
+omni_shadow_mode = 0
 
 [node name="Bat" parent="." instance=ExtResource("8_4n7f1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.131527, 3.00531, 6.8558)
-
-[connection signal="body_entered" from="SUNSTUFF/sunColliderMove/SunCollider" to="Player" method="_on_sun_collider_body_entered"]
-[connection signal="body_exited" from="SUNSTUFF/sunColliderMove/SunCollider" to="Player" method="_on_sun_collider_body_exited"]

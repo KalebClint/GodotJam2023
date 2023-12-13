@@ -2,7 +2,7 @@ extends Node3D
 
 @onready var player = $"../Player"
 
-@onready var segment = $"../NavigationRegion3D/segmentOne"
+@onready var segment = $"../NavigationRegion3D/Segment One"
 
 
 var pos = 0
@@ -22,7 +22,7 @@ func _ready():
 func pickSegment():
 	var rand = randi_range(1,2)
 	if rand == 1:
-		segment = $"../NavigationRegion3D/segmentOne"
+		segment = $"../NavigationRegion3D/Segment One"
 	elif rand == 2:
 		pass
 

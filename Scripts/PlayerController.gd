@@ -57,17 +57,14 @@ func _physics_process(delta):
 	if stanima >= 10:
 		tired = false
 			
-	
-	#If it is daytime, check if the player is under shade. If not increase Ill bar
-	if GameManager.daytime:
-		if !underShade && sunAbove:
-			#illBar += 0.13
-			if illBar >= 100:
-				#Kill The Player
-				illBar = 0
-				position.x = 1
-				position.y = 0
-				position.z = 7
+	if !underShade && sunAbove:
+		#illBar += 0.13
+		if illBar >= 100:
+			#Kill The Player
+			illBar = 0
+			position.x = 1
+			position.y = 0
+			position.z = 7
 				
 			#print(illBar)
 	
