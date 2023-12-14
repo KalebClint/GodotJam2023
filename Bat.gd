@@ -9,6 +9,7 @@ extends CharacterBody3D
 @onready var bat = $Bat
 
 
+
 var carryingBlood = false
 var chasing = false
 var attacking = false
@@ -50,22 +51,24 @@ func findNearestNPC():
 
 	var NPCs = get_tree().get_nodes_in_group("NPC")
 	
-	# assume the first spawn node is closest
-	var nearestNPC = NPCs[0]
+	if NPCs != null:
+		var nearestNPC = NPCs[0]
 	
-	# look through spawn nodes to see if any are closer
-	for npc in NPCs:
-		if npc.global_position.distance_to(player.global_position) < nearestNPC.global_position.distance_to(player.global_position):
-			nearestNPC = npc
-			
-	var playerPosition = player.global_transform.origin
-	var objectPosition = global_transform.origin
-	
-	var distance = objectPosition.z - playerPosition.z
-	
-	if distance < 10 && !carryingBlood:
-		updateTargetLocation(nearestNPC.global_transform.origin)
-		chasing = true
+		# look through spawn nodes to see if any are closer
+		for npc in NPCs:
+			if npc.global_position.distance_to(player.global_position) < nearestNPC.global_position.distance_to(player.global_position):
+				nearestNPC = npc
+				
+		var playerPosition = player.global_transform.origin
+		var objectPosition = global_transform.origin
+		
+		var distance = objectPosition.z - playerPosition.z
+		
+		if distance < 10 && !carryingBlood:
+			updateTargetLocation(nearestNPC.global_transform.origin)
+			chasing = true
+		else:
+			chasing = false
 	else:
 		chasing = false
 	

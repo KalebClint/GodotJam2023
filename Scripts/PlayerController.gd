@@ -6,6 +6,8 @@ extends CharacterBody3D
 
 @onready var GameManager = $".."
 
+@onready var sun = $"../SUNSTUFF/Sun"
+
 var underShade = false
 var sunAbove = false
 
@@ -13,8 +15,8 @@ var illBar = 0
 
 var Health = 80
 
-var maxStanima = 10
-var stanima = 10
+var maxStanima = 15
+var stanima = 15
 
 var sprinting = true
 var tired = false
@@ -43,8 +45,8 @@ func _physics_process(delta):
 		sprinting = false
 		
 	if sprinting == true:
-		SPEED = 10
-		stanima -= 0.05
+		SPEED = 13
+		stanima -= 0.03
 		
 		if stanima <= 0:
 			tired = true
@@ -98,6 +100,25 @@ func _physics_process(delta):
 	$AnimationTree.set("parameters/conditions/walk", !sprinting && input_dir != Vector2.ZERO && is_on_floor())
 	$AnimationTree.set("parameters/conditions/run", sprinting && is_on_floor())
 	$AnimationTree.set("parameters/conditions/jump", !is_on_floor())
+	
+	var pos = global_transform.origin
+	var sunPos = sun.global_transform.origin
+
+	# Calculate the distance along the Z-axis
+	var distance = pos.z - sunPos.z
+
+	# Check if the distance is greater than the maximum allowed distance
+	if distance < 5:
+		illBar += 0.3
+	elif distance < 10:
+		illBar += 0.1
+	elif distance < 15:
+		illBar += 0.05
+	elif distance < 22.5:
+		illBar += 0.025
+	
+	print(illBar)
+	
 	move_and_slide()
 
 func _on_sun_collider_body_entered(body):
