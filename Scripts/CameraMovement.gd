@@ -4,4 +4,4 @@ extends Camera3D
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position.z = player.position.z + 5
+	position.z = player.position.z - 5

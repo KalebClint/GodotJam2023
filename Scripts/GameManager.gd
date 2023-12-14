@@ -10,10 +10,11 @@ extends Node3D
 
 @onready var player = $Player
 
-var sunSpeed = 0.0475
+var sunSpeed = 0.06
 
 @onready var sunSpawn = $SUNSTUFF/SunSpawn
 	
 func _physics_process(delta):
 	
-	sun.position.z -= sunSpeed
+	sun.position.z += sunSpeed
+	

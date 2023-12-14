@@ -5,33 +5,52 @@ extends Node3D
 @onready var segment = $"../NavigationRegion3D/Segment One"
 
 
+@export var segmentOne:PackedScene
+@export var segmentTwo:PackedScene
+@export var segmentThree:PackedScene
+@export var segmentFour:PackedScene
+
+var rotOfTheSeg
+
 var pos = 0
 
 var totalDuplicationDistance = 0
 var firstDuplicationDistance = 84
-var rng = RandomNumberGenerator.new()
 
 func _physics_process(delta):
-	var d = player.position.z + totalDuplicationDistance
-	if d < 20:
-		_on_spawntime_timeout()
+	var d = player.position.z - totalDuplicationDistance
+	if d > 20:
+		spawnNewSegement()
 
 func _ready():
-	_on_spawntime_timeout()
+	rotOfTheSeg = segment.rotation
+	spawnNewSegement()
 
-func pickSegment():
-	var rand = randi_range(1,2)
+func spawnNewSegement():
+	var rand = randi_range(1,1)
 	if rand == 1:
-		segment = $"../NavigationRegion3D/Segment One"
+		var seg = segmentOne.instantiate()
+		seg.rotation = rotOfTheSeg
+		seg.transform.origin.z += totalDuplicationDistance + firstDuplicationDistance
+		add_child(seg)
+		print("New SEG!")
 	elif rand == 2:
-		pass
+		var seg = segmentTwo.instantiate()
+		seg.rotation = rotOfTheSeg
+		seg.transform.origin.z += totalDuplicationDistance + firstDuplicationDistance
+		add_child(seg)
+		print("New SEG!")
+	elif rand == 3:
+		var seg = segmentOne.instantiate()
+		seg.rotation = rotOfTheSeg
+		seg.transform.origin.z += totalDuplicationDistance + firstDuplicationDistance
+		add_child(seg)
+		print("New SEG!")
+	elif rand == 4:
+		var seg = segmentOne.instantiate()
+		seg.rotation = rotOfTheSeg
+		seg.transform.origin.z += totalDuplicationDistance + firstDuplicationDistance
+		add_child(seg)
+		print("New SEG!")
 
-func _on_spawntime_timeout():
-	rng.randomize()
-	var levelInstance: Node3D
-	var levelInstance2: Node3D
-	var randomValue = rng.randf()
-	levelInstance = segment.duplicate()
-	levelInstance.transform.origin.z -= totalDuplicationDistance + firstDuplicationDistance
-	add_child(levelInstance)
 	totalDuplicationDistance += 84
