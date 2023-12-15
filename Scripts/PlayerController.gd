@@ -13,7 +13,7 @@ var sunAbove = false
 
 var illBar = 0
 
-var Health = 80
+var Health = 20
 
 var maxStanima = 15
 var stanima = 15
@@ -39,7 +39,7 @@ func _physics_process(delta):
 		sprinting = false
 		
 	if !sprinting:
-		SPEED = 7.5
+		SPEED = 8.5
 		
 	if Input.is_action_just_released("shift"):
 		sprinting = false
@@ -109,7 +109,7 @@ func _physics_process(delta):
 
 	# Check if the distance is greater than the maximum allowed distance
 	if distance < 5:
-		illBar += 0.3
+		playerDies()
 	elif distance < 10:
 		illBar += 0.1
 	elif distance < 15:
@@ -117,7 +117,9 @@ func _physics_process(delta):
 	elif distance < 22.5:
 		illBar += 0.025
 	
-	print(illBar)
+	if illBar >= 100:
+		playerDies()
+	
 	
 	move_and_slide()
 
@@ -131,3 +133,6 @@ func _on_sun_collider_body_exited(body):
 
 func healPlayer():
 	Health += 20
+
+func playerDies():
+	get_tree().reload_current_scene()
