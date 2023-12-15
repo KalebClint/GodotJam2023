@@ -19,7 +19,7 @@ var firstDuplicationDistance = 84
 
 func _physics_process(delta):
 	var d = player.position.z - totalDuplicationDistance
-	if d > 20:
+	if d > 80:
 		spawnNewSegement()
 
 func _ready():
