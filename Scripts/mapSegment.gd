@@ -1,6 +1,5 @@
 extends Node3D
-
-# Reference to the players
+# Reference to the player
 @onready var player = $"../../Player"
 
 # Set the maximum distance behind the player before deleting the object

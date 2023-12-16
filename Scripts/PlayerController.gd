@@ -12,6 +12,8 @@ extends CharacterBody3D
 
 @onready var audio = $Audio
 
+
+
 var underShade = false
 var sunAbove = false
 

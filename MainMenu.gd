@@ -12,7 +12,8 @@ func _process(delta):
 
 
 func _on_play_pressed():
-	get_tree().change_scene_to_file("res://Scenes/main_scene.tscn")
+	loadManager.load_scene("res://Scenes/main_scene.tscn")
+	
 
 
 func _on_quit_pressed():

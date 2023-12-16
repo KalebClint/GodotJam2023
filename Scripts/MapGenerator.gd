@@ -4,11 +4,8 @@ extends Node3D
 
 @onready var segment = $"../NavigationRegion3D/Segment One"
 
-
 @export var segmentOne:PackedScene
 @export var segmentTwo:PackedScene
-@export var segmentThree:PackedScene
-@export var segmentFour:PackedScene
 
 var rotOfTheSeg
 
@@ -27,30 +24,16 @@ func _ready():
 	spawnNewSegement()
 
 func spawnNewSegement():
-	var rand = randi_range(1,1)
+	var rand = randi_range(1,2)
 	if rand == 1:
 		var seg = segmentOne.instantiate()
 		seg.rotation = rotOfTheSeg
 		seg.transform.origin.z += totalDuplicationDistance + firstDuplicationDistance
 		add_child(seg)
-		print("New SEG!")
 	elif rand == 2:
 		var seg = segmentTwo.instantiate()
 		seg.rotation = rotOfTheSeg
 		seg.transform.origin.z += totalDuplicationDistance + firstDuplicationDistance
 		add_child(seg)
-		print("New SEG!")
-	elif rand == 3:
-		var seg = segmentOne.instantiate()
-		seg.rotation = rotOfTheSeg
-		seg.transform.origin.z += totalDuplicationDistance + firstDuplicationDistance
-		add_child(seg)
-		print("New SEG!")
-	elif rand == 4:
-		var seg = segmentOne.instantiate()
-		seg.rotation = rotOfTheSeg
-		seg.transform.origin.z += totalDuplicationDistance + firstDuplicationDistance
-		add_child(seg)
-		print("New SEG!")
 
 	totalDuplicationDistance += 84
