@@ -17,7 +17,7 @@ var attacking = false
 
 var withPlayer = false
 
-var speed = 5
+var speed = 13
 
 func _physics_process(delta):
 	var currentLocation = global_transform.origin

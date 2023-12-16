@@ -8,6 +8,10 @@ extends CharacterBody3D
 
 @onready var sun = $"../SUNSTUFF/Sun"
 
+@onready var illBarUI = $PlayerUI/illBar
+
+@onready var audio = $Audio
+
 var underShade = false
 var sunAbove = false
 
@@ -31,6 +35,7 @@ func _ready():
 	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	pass
 
+
 func _physics_process(delta):
 	
 	if Input.is_action_pressed("shift") && stanima > 0 && !tired:
@@ -39,13 +44,13 @@ func _physics_process(delta):
 		sprinting = false
 		
 	if !sprinting:
-		SPEED = 8.5
+		SPEED = 12
 		
 	if Input.is_action_just_released("shift"):
 		sprinting = false
 		
 	if sprinting == true:
-		SPEED = 13
+		SPEED = 16
 		stanima -= 0.03
 		
 		if stanima <= 0:
@@ -101,6 +106,11 @@ func _physics_process(delta):
 	$AnimationTree.set("parameters/conditions/run", sprinting && is_on_floor())
 	$AnimationTree.set("parameters/conditions/jump", !is_on_floor())
 	
+	
+	if input_dir != Vector2.ZERO:
+		if !audio.playing:
+			audio.play()
+	
 	var pos = global_transform.origin
 	var sunPos = sun.global_transform.origin
 
@@ -108,16 +118,14 @@ func _physics_process(delta):
 	var distance = pos.z - sunPos.z
 
 	# Check if the distance is greater than the maximum allowed distance
-	if distance < 5:
-		playerDies()
-	elif distance < 10:
-		illBar += 0.1
-	elif distance < 15:
-		illBar += 0.05
-	elif distance < 22.5:
-		illBar += 0.025
+	illBar = 100 - distance
+
+	# Ensure the result is clamped between 0 and 100
+	illBar = clamp(illBar, 0, 100)
 	
-	if illBar >= 100:
+	illBarUI.value = illBar
+	
+	if illBar >= 90:
 		playerDies()
 	
 	
