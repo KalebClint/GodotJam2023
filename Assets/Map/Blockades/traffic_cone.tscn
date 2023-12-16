@@ -1,4 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://c3cb2act8kbox"]
+[gd_scene load_steps=13 format=3 uid="uid://c3cb2act8kbox"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d4qr0"]
+size = Vector3(1.67995, 1.88926, 1.72748)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1hru5"]
 resource_name = "Material.001"
@@ -144,18 +147,16 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_su0id")
 
-[node name="TrafficCone" type="Node3D"]
+[node name="TrafficCone" type="RigidBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.932105, 0)
+shape = SubResource("BoxShape3D_d4qr0")
 
 [node name="Cube" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.878859, 0, 0, 0, 0.015796, 0, 0, 0, 0.878859, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ab3el")
 skeleton = NodePath("")
-
-[node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(0.685921, -0.324013, 0.651558, -1.49012e-08, 0.895396, 0.445271, -0.727676, -0.305421, 0.61417, 7.35889, 4.95831, 6.92579)
-fov = 22.8952
-near = 0.1
-far = 100.0
 
 [node name="Cone" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.660516, 0, 0, 0, 0.993884, 0, 0, 0, 0.660516, 0, 0.971113, 0)

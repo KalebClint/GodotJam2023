@@ -44,8 +44,9 @@ func _physics_process(delta):
 	navAgent.set_velocity(newVelocity)
 	
 	if !shocked:
-		if transform.origin != next_location:
-			look_at(next_location)
+		if global_transform.origin.is_equal_approx(next_location):
+			return
+		look_at(next_location)
 	elif shocked:
 		look_at(lookAtThat)
 	

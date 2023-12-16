@@ -26,7 +26,7 @@ func load_scene(scene_path: String) -> void:
 	start_load()
 	
 func start_load() -> void:
-	var state = ResourceLoader.load_threaded_request(_scene_path, "", use_sub_threads)
+	var state = ResourceLoader.load_threaded_request(_scene_path, "")
 	if state == OK:
 		set_process(true)
 		
