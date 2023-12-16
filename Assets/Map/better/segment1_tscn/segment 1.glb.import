@@ -28,5 +28,64 @@ animation/fps=15
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"ConcreteBlocksPavingSquareStack001_2K": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Map/better/segment1_tscn/ConcreteBlocksPavingSquareStack001_2K.tres"
+},
+"ConcreteBlocksPavingSquareStack001_2K.001": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Map/better/segment1_tscn/ConcreteBlocksPavingSquareStack001_2K.001.tres"
+},
+"ConcreteBlocksPavingSquareStack001_2K.002": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Map/better/segment1_tscn/ConcreteBlocksPavingSquareStack001_2K.002.tres"
+},
+"ConcreteBlocksPavingSquareStack001_2K.003": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Map/better/segment1_tscn/ConcreteBlocksPavingSquareStack001_2K.003.tres"
+},
+"ConcreteBlocksPavingSquareStack001_2K.004": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Map/better/segment1_tscn/ConcreteBlocksPavingSquareStack001_2K.004.tres"
+},
+"ConcreteBlocksPavingSquareStack001_2K.005": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Map/better/segment1_tscn/ConcreteBlocksPavingSquareStack001_2K.005.tres"
+},
+"Material.001": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Map/better/segment1_tscn/Material.001.tres"
+},
+"Material.002": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Map/better/segment1_tscn/Material.002.tres"
+},
+"Material.003": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Map/better/segment1_tscn/Material.003.tres"
+},
+"Material.004": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Map/better/segment1_tscn/Material.004.tres"
+},
+"Material.005": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Map/better/segment1_tscn/Material.005.tres"
+},
+"Material.007": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Map/better/segment1_tscn/Material.007.tres"
+},
+"Material.009": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Map/better/segment1_tscn/Material.009.tres"
+},
+"Material.010": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Map/better/segment1_tscn/Material.010.tres"
+}
+}
+}
 gltf/embedded_image_handling=1

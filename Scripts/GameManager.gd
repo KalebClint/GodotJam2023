@@ -10,6 +10,5 @@ func _physics_process(delta):
 	
 	sun.position.z += sunSpeed
 	
-
 func aNpcDied(dedNPC):
 	get_tree().call_group("NPC","deathHappened",dedNPC)
