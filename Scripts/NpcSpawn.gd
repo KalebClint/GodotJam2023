@@ -4,6 +4,7 @@ extends Node3D
 @export var NpcTwo:PackedScene
 @export var NpcThree:PackedScene
 @export var NpcFour:PackedScene
+@export var NpcFive:PackedScene
 
 @onready var secondPoint = self.get_child(0)
 @onready var thirdPoint = self.get_child(1)
@@ -18,26 +19,30 @@ func _ready():
 	#Chance to spawn in a NPC
 	var rand = randf_range(1,4.5)
 	if rand < 4.313:
-		rand = randi_range(1,4)
+		rand = randi_range(1,5)
 		#Randomly pick which NPC to spawn
-		if rand == 1 || rand == 2:
+		if rand == 1:
 			var Npc = NpcOne.instantiate()
 			add_child(Npc)
 			Npc.setPoints(global_transform.origin,secondPoint.global_transform.origin,thirdPoint.global_transform.origin)
 			Npc.global_transform.origin = global_transform.origin
-		elif rand == 3:
+		elif rand == 2:
 			var Npc = NpcTwo.instantiate()
 			add_child(Npc)
 			Npc.setPoints(global_transform.origin,secondPoint.global_transform.origin,thirdPoint.global_transform.origin)
 			Npc.global_transform.origin = global_transform.origin
-		elif rand == 4:
+		elif rand == 3:
 			var Npc = NpcThree.instantiate()
 			add_child(Npc)
 			Npc.setPoints(global_transform.origin,secondPoint.global_transform.origin,thirdPoint.global_transform.origin)
 			Npc.global_transform.origin = global_transform.origin
-		elif rand == 5:
-			var Npc = NpcOne.instantiate()
+		elif rand == 4:
+			var Npc = NpcFour.instantiate()
 			add_child(Npc)
 			Npc.setPoints(global_transform.origin,secondPoint.global_transform.origin,thirdPoint.global_transform.origin)
 			Npc.global_transform.origin = global_transform.origin
-
+		elif rand == 5:
+			var Npc = NpcFive.instantiate()
+			add_child(Npc)
+			Npc.setPoints(global_transform.origin,secondPoint.global_transform.origin,thirdPoint.global_transform.origin)
+			Npc.global_transform.origin = global_transform.origin

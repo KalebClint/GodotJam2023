@@ -13,7 +13,7 @@ var firstPoint
 var secondPoint
 var thirdPoint
 
-var speed = 3
+var speed = 7
 
 var pointOne = true
 var pointTwo = false
@@ -51,7 +51,7 @@ func _physics_process(delta):
 		updateTargetLocation(player.global_transform.origin)
 	
 	if chasing:
-		speed = 10
+		speed = 11
 	else:
 		speed = 7
 		
