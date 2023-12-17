@@ -51,9 +51,9 @@ func _physics_process(_delta):
 		updateTargetLocation(player.global_transform.origin)
 	
 	if chasing:
-		speed = 11
+		speed = randi_range(10,15)
 	else:
-		speed = 7
+		speed = randi_range(6,9)
 		
 	if !chasing:
 		if global_transform.origin.is_equal_approx(next_location):
