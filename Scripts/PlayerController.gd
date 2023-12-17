@@ -5,14 +5,20 @@ extends CharacterBody3D
 @onready var theTree = $AnimationTree
 
 @onready var GameManager = $".."
+@onready var playerUI = $PlayerUI
 
 @onready var sun = $"../SUNSTUFF/Sun"
 
 @onready var illBarUI = $PlayerUI/illBar
 @onready var hungerBarUI = $PlayerUI/hungerBar
+@onready var scoreLabel = $PlayerUI/Label
 
 @onready var audio = $Audio
 @onready var casta = $VampireMesh/Casta
+
+@onready var pauseMenu = $PlayerUI/Pause
+
+var score = 0
 
 var pauseHunger = false
 var attacking = false
@@ -32,6 +38,10 @@ var playerStunned = false
 var sprinting = true
 var tired = false
 
+var zLevel
+var theZLevel
+var furthestZ
+
 var SPEED = 7.5
 const JUMP_VELOCITY = 5
 
@@ -39,11 +49,23 @@ const JUMP_VELOCITY = 5
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
+	furthestZ = 0
+	zLevel = position.z
 	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	hunger = 100
-
+	score = 0
 
 func _physics_process(delta):
+	
+	zLevel = position.z
+	
+	if zLevel > furthestZ:
+		if zLevel > furthestZ:
+			score += 1
+			furthestZ = zLevel
+	
+	theZLevel = zLevel
+	scoreLabel.text = "Score: " + str(score)
 	
 	if !pauseHunger:
 		hunger -= hungLossSpeed
@@ -53,6 +75,10 @@ func _physics_process(delta):
 		playerDies()
 	
 	hungerBarUI.value = hunger
+	
+	if Input.is_action_pressed("pauseButton"):
+		pauseMenu.show()
+		get_tree().paused = true
 	
 	if Input.is_action_pressed("shift") && stanima > 0 && !tired:
 		sprinting = true
@@ -168,9 +194,9 @@ func playerDrinks():
 	pauseTheHunger()
 
 func playerDies():
-	get_tree().reload_current_scene()
+	playerUI.playerDied(score)
 
 func pauseTheHunger():
 	pauseHunger = true
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(4).timeout
 	pauseHunger = false

@@ -14,7 +14,7 @@ func _ready():
 	gameManager = get_node("/root")
 	
 	#Chance to spawn in a NPC
-	var rand = randf_range(1,5)
+	var rand = randf_range(1,6)
 	if rand < 4:
 		var enemy = Angel.instantiate()
 		add_child(enemy)

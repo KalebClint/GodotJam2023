@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://buahlkqjynthp"]
+
+[ext_resource type="Script" path="res://Scenes/main_menu_ui.gd" id="1_4hwe8"]
+
+[node name="MainMenuUI" type="CanvasLayer"]
+script = ExtResource("1_4hwe8")
+
+[node name="Pause" type="Panel" parent="."]
+offset_left = 106.0
+offset_top = 60.0
+offset_right = 385.0
+offset_bottom = 223.0
+
+[node name="Quit" type="Button" parent="Pause"]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 101.0
+offset_right = 192.0
+offset_bottom = 127.0
+theme_override_font_sizes/font_size = 13
+text = "Quit"
+
+[node name="Resume" type="Button" parent="Pause"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 44.0
+offset_right = 193.0
+offset_bottom = 70.0
+theme_override_font_sizes/font_size = 13
+text = "Resume"
+
+[node name="EndGame" type="Panel" parent="."]
+offset_left = 107.0
+offset_top = 60.0
+offset_right = 385.0
+offset_bottom = 223.0
+
+[connection signal="pressed" from="Pause/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Pause/Resume" to="." method="_on_resume_pressed"]

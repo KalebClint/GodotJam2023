@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dnexgc46qedx5"]
+[gd_scene load_steps=5 format=3 uid="uid://dnexgc46qedx5"]
 
+[ext_resource type="Script" path="res://Assets/Player/player_ui.gd" id="1_f4gvh"]
 [ext_resource type="Theme" uid="uid://dqfjc02mqbbyu" path="res://Assets/UI_Theme.tres" id="1_n0vkn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7tera"]
@@ -10,16 +11,13 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
 
-[node name="PlayerUI" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5k1ou"]
+bg_color = Color(0.109804, 0.109804, 0.109804, 0.905882)
+
+[node name="PlayerUI" type="CanvasLayer"]
+script = ExtResource("1_f4gvh")
 
 [node name="illBar" type="ProgressBar" parent="."]
-layout_mode = 0
 offset_left = 85.0
 offset_top = 237.0
 offset_right = 388.0
@@ -40,7 +38,6 @@ theme_override_font_sizes/font_size = 8
 text = "Illumination"
 
 [node name="hungerBar" type="ProgressBar" parent="."]
-layout_mode = 0
 offset_left = 85.0
 offset_top = 216.0
 offset_right = 387.0
@@ -58,3 +55,87 @@ offset_right = 235.0
 offset_bottom = 27.0
 theme_override_font_sizes/font_size = 8
 text = "Hunger"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 206.0
+offset_top = 14.0
+offset_right = 263.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 15
+text = "Score: 0"
+
+[node name="Pause" type="Panel" parent="."]
+process_mode = 3
+visible = false
+offset_left = 106.0
+offset_top = 60.0
+offset_right = 385.0
+offset_bottom = 210.0
+
+[node name="Quit" type="Button" parent="Pause"]
+process_mode = 3
+layout_mode = 0
+offset_left = 87.0
+offset_top = 101.0
+offset_right = 192.0
+offset_bottom = 127.0
+theme_override_font_sizes/font_size = 13
+text = "Quit"
+
+[node name="Resume" type="Button" parent="Pause"]
+process_mode = 3
+layout_mode = 0
+offset_left = 88.0
+offset_top = 44.0
+offset_right = 193.0
+offset_bottom = 70.0
+theme_override_font_sizes/font_size = 13
+text = "Resume"
+
+[node name="EndGame" type="Panel" parent="."]
+process_mode = 3
+visible = false
+offset_left = 107.0
+offset_top = 60.0
+offset_right = 385.0
+offset_bottom = 210.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_5k1ou")
+
+[node name="Play Again" type="Button" parent="EndGame"]
+process_mode = 3
+offset_left = 85.0
+offset_top = 87.0
+offset_right = 190.0
+offset_bottom = 113.0
+theme_override_font_sizes/font_size = 13
+text = "Play Again"
+
+[node name="Quit" type="Button" parent="EndGame"]
+process_mode = 3
+offset_left = 86.0
+offset_top = 117.0
+offset_right = 191.0
+offset_bottom = 143.0
+theme_override_font_sizes/font_size = 13
+text = "Quit"
+
+[node name="HighScore" type="Label" parent="EndGame"]
+offset_left = 91.0
+offset_top = 18.0
+offset_right = 181.0
+offset_bottom = 44.0
+theme_override_font_sizes/font_size = 15
+text = "HighScore: 0"
+
+[node name="EndScore" type="Label" parent="EndGame"]
+offset_left = 105.0
+offset_top = 42.0
+offset_right = 195.0
+offset_bottom = 68.0
+theme_override_font_sizes/font_size = 15
+text = "Score: 0"
+
+[connection signal="pressed" from="Pause/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Pause/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="EndGame/Play Again" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="EndGame/Quit" to="." method="_on_quit_pressed"]

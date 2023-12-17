@@ -3,13 +3,16 @@ extends Node3D
 @onready var player = $"../../../Player"
 
 @export var cone : PackedScene
+@export var blockade : PackedScene
 
 # Set the maximum distance behind the player before deleting the object
 var maxDistance = -75.0  # Adjust the value based on your needs
 
 func _ready():
-	var rand = randi_range(0,6)
+	var rand = randi_range(0,10)
 	deployCone(rand)
+	if rand < 7:
+		deployBlockade()
 
 func _process(delta):
 	var playerPosition = player.global_transform.origin
@@ -37,3 +40,12 @@ func deployCone(amount):
 			_cone.global_position.x += randf_range(6,-6)
 			_cone.global_position.z += randf_range(65,-65)
 			index += 1
+
+func deployBlockade():
+	
+	var _blockade = blockade.instantiate()
+	_blockade.global_position = global_position
+	_blockade.global_position.y += 0.2
+	add_child(_blockade)
+	_blockade.global_position.x += randf_range(3,-3)
+	_blockade.global_position.z += randf_range(65,-65)
