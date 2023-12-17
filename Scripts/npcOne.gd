@@ -6,7 +6,7 @@ extends CharacterBody3D
 
 @onready var manager
 
-@onready var player = $"../../../../../Player"
+@onready var player = $"../../../../../../Player"
 
 var firstPoint
 var secondPoint

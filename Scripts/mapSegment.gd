@@ -1,6 +1,6 @@
 extends Node3D
 # Reference to the player
-@onready var player = $"../../Player"
+@onready var player = $"../../../Player"
 
 @export var cone : PackedScene
 

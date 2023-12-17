@@ -27,6 +27,8 @@ var hungLossSpeed = 0.035
 var maxStanima = 15
 var stanima = 15
 
+var playerStunned = false
+
 var sprinting = true
 var tired = false
 
@@ -96,7 +98,7 @@ func _physics_process(delta):
 		
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
-		if !attacking:
+		if !attacking && !playerStunned:
 			characterMesh.look_at(position - direction)
 		characterMesh.rotation.x = 0
 		
@@ -135,31 +137,31 @@ func _physics_process(delta):
 	if illBar >= 90:
 		playerDies()
 	
-	if !attacking:
+	if !attacking && !playerStunned:
 		move_and_slide()
 
 func bloodSuck():
 	attacking = true
 	
-
-		
-	await get_tree().create_timer(1.5).timeout
+	var isNpc = false
 	if casta.is_colliding():
 		var col = casta.get_collider()
 		if col.is_in_group("NPC"):
+			isNpc = true
 			var col_ = col.get_node(col.get_path())
 			col_.died()
-			playerDrinks()
-		
+			
+	await get_tree().create_timer(1.5).timeout
+	
+	if isNpc:
+		playerDrinks()
+	
 	attacking = false
 
-func _on_sun_collider_body_entered(body):
-	if body.name == "Player":
-		sunAbove = true
-
-func _on_sun_collider_body_exited(body):
-	if body.name == "Player":
-		sunAbove = false
+func stunned():
+	playerStunned = true
+	await get_tree().create_timer(2).timeout
+	playerStunned = false
 
 func playerDrinks():
 	hunger += 25

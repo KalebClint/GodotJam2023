@@ -16,8 +16,8 @@ func _ready():
 	gameManager = get_node("/root")
 	
 	#Chance to spawn in a NPC
-	var rand = randi_range(1,5)
-	if rand < 4:
+	var rand = randf_range(1,4.5)
+	if rand < 4.313:
 		rand = randi_range(1,4)
 		#Randomly pick which NPC to spawn
 		if rand == 1 || rand == 2:
@@ -41,7 +41,3 @@ func _ready():
 			Npc.setPoints(global_transform.origin,secondPoint.global_transform.origin,thirdPoint.global_transform.origin)
 			Npc.global_transform.origin = global_transform.origin
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

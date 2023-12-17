@@ -4,7 +4,7 @@ extends Node3D
 
 @onready var player = $Player
 
-var sunSpeed = 0.18
+var sunSpeed = 0.17
 
 func _physics_process(delta):
 	

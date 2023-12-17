@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @onready var navAgent = $NavigationAgent3D
 
+
 @onready var animation_tree = $AnimationTree
 
 @onready var manager
@@ -21,6 +22,8 @@ var pointThree = false
 var idle = false
 var walking = false
 var chasing = false
+
+var attacking = false
 
 func _ready():
 	manager = get_node("/root/GameManager")
@@ -45,7 +48,7 @@ func _physics_process(delta):
 	
 	if d < 20:
 		chasing = true
-		updateTargetLocation(player)
+		updateTargetLocation(player.global_transform.origin)
 	
 	if chasing:
 		speed = 10
@@ -59,13 +62,14 @@ func _physics_process(delta):
 	else:
 		walking = false
 		idle = false
-		look_at(player)
-	
-	
+		look_at(player.global_transform.origin)
 	
 	rotation.x = 0
 	
-	#$AnimationTree.set("parameters/conditions/walking", walking)
+	$AnimationTree.set("parameters/conditions/walk", walking)
+	$AnimationTree.set("parameters/conditions/idle", idle)
+	$AnimationTree.set("parameters/conditions/run", chasing)
+	$AnimationTree.set("parameters/conditions/attacking", attacking)
 	
 func updateTargetLocation(targetLoc):
 	if targetLoc != null:
@@ -100,7 +104,7 @@ func walkToNextPoint():
 func _on_navigation_agent_3d_target_reached():
 	if !idle && !chasing:
 		becomeIdle()
-	elif chasing:
+	elif chasing && !attacking:
 		attackPlayer()
 	
 func becomeIdle():
@@ -110,14 +114,18 @@ func becomeIdle():
 	walkToNextPoint()
 
 func _on_navigation_agent_3d_velocity_computed(safe_velocity):
-	if !idle:
+	if !idle && !attacking:
 		velocity = velocity.move_toward(safe_velocity,0.25)
 		move_and_slide()
 		walking = true
 
 func attackPlayer():
-	pass
-
+	attacking = true
+	player.stunned()
+	await get_tree().create_timer(3).timeout
+	attacking = false
+	chasing = true
+	
 
 
 
