@@ -23,22 +23,22 @@ func _ready():
 		if rand == 1 || rand == 2:
 			var Npc = NpcOne.instantiate()
 			add_child(Npc)
-			Npc.setPoints(secondPoint.global_transform.origin,thirdPoint.global_transform.origin)
+			Npc.setPoints(global_transform.origin,secondPoint.global_transform.origin,thirdPoint.global_transform.origin)
 			Npc.global_transform.origin = global_transform.origin
 		elif rand == 3:
 			var Npc = NpcTwo.instantiate()
 			add_child(Npc)
-			Npc.setPoints(secondPoint.global_transform.origin,thirdPoint.global_transform.origin)
+			Npc.setPoints(global_transform.origin,secondPoint.global_transform.origin,thirdPoint.global_transform.origin)
 			Npc.global_transform.origin = global_transform.origin
 		elif rand == 4:
 			var Npc = NpcThree.instantiate()
 			add_child(Npc)
-			Npc.setPoints(secondPoint.global_transform.origin,thirdPoint.global_transform.origin)
+			Npc.setPoints(global_transform.origin,secondPoint.global_transform.origin,thirdPoint.global_transform.origin)
 			Npc.global_transform.origin = global_transform.origin
 		elif rand == 5:
 			var Npc = NpcOne.instantiate()
 			add_child(Npc)
-			Npc.setPoints(secondPoint.global_transform.origin,thirdPoint.global_transform.origin)
+			Npc.setPoints(global_transform.origin,secondPoint.global_transform.origin,thirdPoint.global_transform.origin)
 			Npc.global_transform.origin = global_transform.origin
 
 

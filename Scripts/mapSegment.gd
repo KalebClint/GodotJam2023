@@ -8,7 +8,7 @@ extends Node3D
 var maxDistance = -75.0  # Adjust the value based on your needs
 
 func _ready():
-	var rand = randi_range(0,5)
+	var rand = randi_range(0,6)
 	deployCone(rand)
 
 func _process(delta):
@@ -33,7 +33,7 @@ func deployCone(amount):
 			var _cone = cone.instantiate()
 			_cone.global_position = global_position
 			_cone.global_position.y += 0.2
-			_cone.global_position.x += randf_range(2,-2)
-			_cone.global_position.z += randf_range(15,-15)
 			add_child(_cone)
+			_cone.global_position.x += randf_range(6,-6)
+			_cone.global_position.z += randf_range(65,-65)
 			index += 1

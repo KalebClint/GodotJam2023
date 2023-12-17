@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bepgm0dbx3npf"]
+[gd_scene load_steps=13 format=3 uid="uid://bepgm0dbx3npf"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_8s3hp"]
 [ext_resource type="PackedScene" uid="uid://biwp4yifu2qgc" path="res://Assets/Player/player.tscn" id="1_q62dl"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://bcjbqx2ogmiem" path="res://Assets/Map/MapScenes/segment2.tscn" id="5_dw8j2"]
 [ext_resource type="PackedScene" uid="uid://b68liv8bm81gr" path="res://Assets/PowerUps/bat.tscn" id="8_4n7f1"]
 [ext_resource type="AudioStream" uid="uid://dbpc81gk4k3gp" path="res://Assets/Audio/Music/GWJ64_MainTheme.ogg" id="8_jtn60"]
-[ext_resource type="PackedScene" uid="uid://c14rlb53vnu81" path="res://Assets/Map/Blockades/blockade.tscn" id="9_2txc3"]
 [ext_resource type="PackedScene" uid="uid://c3cb2act8kbox" path="res://Assets/Map/Blockades/traffic_cone.tscn" id="11_1my5j"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_fyp2n"]
@@ -42,7 +41,7 @@ script = ExtResource("2_mtq23")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 4.66475e-08, -7.39375e-08, 0, 0.845746, 0.533585, 8.74228e-08, 0.533585, -0.845746, -0.891463, 5.5255, -39.4341)
+transform = Transform3D(-1, 4.66475e-08, -7.39375e-08, 0, 0.845746, 0.533585, 8.74228e-08, 0.533585, -0.845746, -0.891463, 5.5255, -32.3714)
 fov = 100.0
 script = ExtResource("3_0grrj")
 
@@ -53,7 +52,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.78039, 4.24583, -9.90699)
 transform = Transform3D(1, 0, 0, 0, 0.845746, -0.533585, 0, 0.533585, 0.845746, 9.54659, 4.24583, -9.90699)
 
 [node name="Player" parent="." instance=ExtResource("1_q62dl")]
-transform = Transform3D(-1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 0.577, 0.989, -30)
+transform = Transform3D(-1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 0.577, 0.989, -22.9373)
 
 [node name="BatPoint" type="Node3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23797, 2.10394, 0)
@@ -76,9 +75,6 @@ environment = SubResource("Environment_7360k")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_jtn60")
 autoplay = true
-
-[node name="Blockade" parent="." instance=ExtResource("9_2txc3")]
-transform = Transform3D(-2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, -3.81111, 1.12379, -18.6852)
 
 [node name="TrafficCone" parent="." instance=ExtResource("11_1my5j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8293, 0.2, -37.0253)

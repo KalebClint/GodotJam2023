@@ -9,17 +9,20 @@ extends CharacterBody3D
 @onready var sun = $"../SUNSTUFF/Sun"
 
 @onready var illBarUI = $PlayerUI/illBar
+@onready var hungerBarUI = $PlayerUI/hungerBar
 
 @onready var audio = $Audio
+@onready var casta = $VampireMesh/Casta
 
-
+var pauseHunger = false
+var attacking = false
 
 var underShade = false
 var sunAbove = false
 
 var illBar = 0
-
-var Health = 20
+var hunger = 100
+var hungLossSpeed = 0.035
 
 var maxStanima = 15
 var stanima = 15
@@ -35,10 +38,19 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	pass
+	hunger = 100
 
 
 func _physics_process(delta):
+	
+	if !pauseHunger:
+		hunger -= hungLossSpeed
+	hunger = clamp(hunger, 0,100)
+	
+	if hunger <= 1:
+		playerDies()
+	
+	hungerBarUI.value = hunger
 	
 	if Input.is_action_pressed("shift") && stanima > 0 && !tired:
 		sprinting = true
@@ -50,6 +62,9 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_released("shift"):
 		sprinting = false
+		
+	if Input.is_action_just_pressed("bloodSuck") && !attacking:
+		bloodSuck()
 		
 	if sprinting == true:
 		SPEED = 16
@@ -66,17 +81,6 @@ func _physics_process(delta):
 	if stanima >= 10:
 		tired = false
 			
-	if !underShade && sunAbove:
-		#illBar += 0.13
-		if illBar >= 100:
-			#Kill The Player
-			illBar = 0
-			position.x = 1
-			position.y = 0
-			position.z = 7
-				
-			#print(illBar)
-	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -92,8 +96,8 @@ func _physics_process(delta):
 		
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
-		
-		characterMesh.look_at(position - direction)
+		if !attacking:
+			characterMesh.look_at(position - direction)
 		characterMesh.rotation.x = 0
 		
 	else:
@@ -103,10 +107,11 @@ func _physics_process(delta):
 	if input_dir == Vector2.ZERO && is_on_floor():
 		sprinting = false
 
-	$AnimationTree.set("parameters/conditions/idle", input_dir == Vector2.ZERO && is_on_floor())
-	$AnimationTree.set("parameters/conditions/walk", !sprinting && input_dir != Vector2.ZERO && is_on_floor())
-	$AnimationTree.set("parameters/conditions/run", sprinting && is_on_floor())
-	$AnimationTree.set("parameters/conditions/jump", !is_on_floor())
+	$AnimationTree.set("parameters/conditions/idle", input_dir == Vector2.ZERO && is_on_floor() && !attacking)
+	$AnimationTree.set("parameters/conditions/walk", !sprinting && input_dir != Vector2.ZERO && is_on_floor() && !attacking)
+	$AnimationTree.set("parameters/conditions/run", sprinting && is_on_floor() && !attacking)
+	$AnimationTree.set("parameters/conditions/jump", !is_on_floor() && !attacking)
+	$AnimationTree.set("parameters/conditions/attack", attacking)
 	
 	
 	if input_dir != Vector2.ZERO:
@@ -130,8 +135,23 @@ func _physics_process(delta):
 	if illBar >= 90:
 		playerDies()
 	
+	if !attacking:
+		move_and_slide()
+
+func bloodSuck():
+	attacking = true
 	
-	move_and_slide()
+
+		
+	await get_tree().create_timer(1.5).timeout
+	if casta.is_colliding():
+		var col = casta.get_collider()
+		if col.is_in_group("NPC"):
+			var col_ = col.get_node(col.get_path())
+			col_.died()
+			playerDrinks()
+		
+	attacking = false
 
 func _on_sun_collider_body_entered(body):
 	if body.name == "Player":
@@ -141,8 +161,14 @@ func _on_sun_collider_body_exited(body):
 	if body.name == "Player":
 		sunAbove = false
 
-func healPlayer():
-	Health += 20
+func playerDrinks():
+	hunger += 25
+	pauseTheHunger()
 
 func playerDies():
 	get_tree().reload_current_scene()
+
+func pauseTheHunger():
+	pauseHunger = true
+	await get_tree().create_timer(2).timeout
+	pauseHunger = false

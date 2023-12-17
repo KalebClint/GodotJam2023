@@ -35,7 +35,8 @@ func _physics_process(delta):
 			await get_tree().create_timer(0.1).timeout
 			bat.look_at(position - direction)
 		elif chasing:
-			bat.look_at(NpcTarget.position)
+			if NpcTarget != free:
+				bat.look_at(NpcTarget.position)
 	
 	if player.Health < 90 && !carryingBlood:
 		findNearestNPC()
@@ -85,8 +86,7 @@ func _on_navigation_agent_3d_target_reached():
 			attacking = true
 			attackingNPC()
 	elif carryingBlood == true:
-		print("Healed player")
-		player.healPlayer()
+		player.playerDrinks()
 		carryingBlood = false
 		
 func attackingNPC():
