@@ -28,17 +28,19 @@ volumetric_fog_emission = Color(0.172549, 0.2, 0.2, 1)
 [node name="GameManager" type="Node3D"]
 script = ExtResource("1_8s3hp")
 
-[node name="MapGenerator" type="Node3D" parent="."]
-script = ExtResource("4_kgdsm")
-segmentOne = ExtResource("3_o7351")
-segmentTwo = ExtResource("5_dw8j2")
-
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_fyp2n")
 script = ExtResource("2_mtq23")
 
-[node name="Segment One" parent="NavigationRegion3D" instance=ExtResource("3_o7351")]
+[node name="startingSeg" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="Segment One" parent="NavigationRegion3D/startingSeg" instance=ExtResource("3_o7351")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="MapGenerator" type="Node3D" parent="NavigationRegion3D"]
+script = ExtResource("4_kgdsm")
+segmentOne = ExtResource("3_o7351")
+segmentTwo = ExtResource("5_dw8j2")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, 4.66475e-08, -7.39375e-08, 0, 0.845746, 0.533585, 8.74228e-08, 0.533585, -0.845746, -0.891463, 5.5255, -32.3714)

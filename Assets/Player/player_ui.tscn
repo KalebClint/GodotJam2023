@@ -4,10 +4,10 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7tera"]
 bg_color = Color(0.811765, 0.14902, 0.207843, 1)
-border_width_left = 4
-border_width_top = 4
+border_width_left = 2
+border_width_top = 2
 border_width_right = 2
-border_width_bottom = 4
+border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
 
 [node name="PlayerUI" type="Control"]
@@ -20,10 +20,10 @@ grow_vertical = 2
 
 [node name="illBar" type="ProgressBar" parent="."]
 layout_mode = 0
-offset_left = 261.0
-offset_top = 583.0
-offset_right = 917.0
-offset_bottom = 616.0
+offset_left = 85.0
+offset_top = 237.0
+offset_right = 388.0
+offset_bottom = 253.0
 theme = ExtResource("1_n0vkn")
 min_value = 50.0
 max_value = 90.0
@@ -32,18 +32,19 @@ show_percentage = false
 
 [node name="Label" type="Label" parent="illBar"]
 layout_mode = 0
-offset_left = 281.0
+offset_left = 137.0
 offset_top = 3.0
-offset_right = 375.0
+offset_right = 231.0
 offset_bottom = 29.0
+theme_override_font_sizes/font_size = 8
 text = "Illumination"
 
 [node name="hungerBar" type="ProgressBar" parent="."]
 layout_mode = 0
-offset_left = 261.0
-offset_top = 539.0
-offset_right = 917.0
-offset_bottom = 572.0
+offset_left = 85.0
+offset_top = 216.0
+offset_right = 387.0
+offset_bottom = 231.0
 theme = ExtResource("1_n0vkn")
 theme_override_styles/fill = SubResource("StyleBoxFlat_7tera")
 value = 10.0
@@ -51,8 +52,9 @@ show_percentage = false
 
 [node name="Label" type="Label" parent="hungerBar"]
 layout_mode = 0
-offset_left = 301.0
-offset_top = 3.0
-offset_right = 395.0
-offset_bottom = 29.0
+offset_left = 141.0
+offset_top = 1.0
+offset_right = 235.0
+offset_bottom = 27.0
+theme_override_font_sizes/font_size = 8
 text = "Hunger"

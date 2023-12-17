@@ -1,8 +1,10 @@
 extends Node3D
 
-@onready var player = $"../Player"
+@onready var player = $"../../Player"
 
-@onready var segment = $"../NavigationRegion3D/Segment One"
+@onready var segment = $"../startingSeg/Segment One"
+
+@onready var navReg = $".."
 
 @export var segmentOne:PackedScene
 @export var segmentTwo:PackedScene
@@ -20,6 +22,7 @@ func _physics_process(delta):
 		spawnNewSegement()
 
 func _ready():
+	navReg.bake_navigation_mesh(true)
 	rotOfTheSeg = segment.rotation
 	spawnNewSegement()
 
@@ -36,4 +39,5 @@ func spawnNewSegement():
 		seg.transform.origin.z += totalDuplicationDistance + firstDuplicationDistance
 		add_child(seg)
 
+	navReg.bake_navigation_mesh(true)
 	totalDuplicationDistance += 84
