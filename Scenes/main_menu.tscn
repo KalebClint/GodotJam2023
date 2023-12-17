@@ -8,83 +8,64 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ai014")
 
 [node name="Quit" type="Button" parent="."]
 layout_mode = 0
-offset_left = 199.0
-offset_top = 207.0
-offset_right = 275.0
-offset_bottom = 234.0
+offset_left = 244.0
+offset_top = 220.0
+offset_right = 356.0
+offset_bottom = 257.0
 theme_override_constants/outline_size = 2
 
 [node name="Label" type="Label" parent="Quit"]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 2.0
-offset_right = 58.0
-offset_bottom = 27.0
+offset_left = 29.0
+offset_top = 4.0
+offset_right = 78.0
+offset_bottom = 35.0
 theme_override_colors/font_color = Color(1, 0.14902, 0.184314, 1)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/outline_size = 1
 theme_override_constants/shadow_outline_size = 1
-theme_override_font_sizes/font_size = 15
-text = "QUIT"
-
-[node name="Options" type="Button" parent="."]
-layout_mode = 0
-offset_left = 199.0
-offset_top = 164.0
-offset_right = 274.0
-offset_bottom = 194.0
-theme_override_constants/outline_size = 2
-
-[node name="Label" type="Label" parent="Options"]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 3.0
-offset_right = 67.0
-offset_bottom = 28.0
-theme_override_colors/font_color = Color(1, 0.14902, 0.184314, 1)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/outline_size = 1
-theme_override_constants/shadow_outline_size = 1
-theme_override_font_sizes/font_size = 15
-text = "Options"
+theme_override_font_sizes/font_size = 20
+text = "Quit"
 
 [node name="Play" type="Button" parent="."]
 layout_mode = 0
-offset_left = 198.0
-offset_top = 122.0
-offset_right = 274.0
-offset_bottom = 152.0
+offset_left = 243.0
+offset_top = 172.0
+offset_right = 354.0
+offset_bottom = 206.0
 theme_override_constants/outline_size = 2
 
 [node name="Label" type="Label" parent="Play"]
 layout_mode = 0
-offset_left = 22.0
-offset_top = 2.0
-offset_right = 76.0
-offset_bottom = 27.0
+offset_left = 31.0
+offset_top = 1.0
+offset_right = 85.0
+offset_bottom = 39.0
 theme_override_colors/font_color = Color(1, 0.14902, 0.184314, 1)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/outline_size = 1
 theme_override_constants/shadow_outline_size = 1
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 20
 text = "Play"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 146.0
-offset_top = 37.0
-offset_right = 326.0
-offset_bottom = 82.0
+offset_left = 165.0
+offset_top = 41.0
+offset_right = 433.0
+offset_bottom = 107.0
 theme_override_colors/font_color = Color(0.67451, 0, 0.113725, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 0
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 45
 text = "MAIN MENU"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

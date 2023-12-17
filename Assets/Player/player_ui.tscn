@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnexgc46qedx5"]
+[gd_scene load_steps=7 format=3 uid="uid://dnexgc46qedx5"]
 
 [ext_resource type="Script" path="res://Assets/Player/player_ui.gd" id="1_f4gvh"]
 [ext_resource type="Theme" uid="uid://dqfjc02mqbbyu" path="res://Assets/UI_Theme.tres" id="1_n0vkn"]
@@ -14,14 +14,26 @@ border_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5k1ou"]
 bg_color = Color(0.109804, 0.109804, 0.109804, 0.905882)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l77yr"]
+bg_color = Color(0.254902, 0.254902, 0.254902, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgxhs"]
+bg_color = Color(0, 0.643137, 0.0470588, 1)
+
 [node name="PlayerUI" type="CanvasLayer"]
 script = ExtResource("1_f4gvh")
 
 [node name="illBar" type="ProgressBar" parent="."]
-offset_left = 85.0
-offset_top = 237.0
-offset_right = 388.0
-offset_bottom = 253.0
+offset_left = 129.0
+offset_top = 271.0
+offset_right = 453.0
+offset_bottom = 295.0
 theme = ExtResource("1_n0vkn")
 min_value = 50.0
 max_value = 90.0
@@ -34,14 +46,14 @@ offset_left = 137.0
 offset_top = 3.0
 offset_right = 231.0
 offset_bottom = 29.0
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 12
 text = "Illumination"
 
 [node name="hungerBar" type="ProgressBar" parent="."]
-offset_left = 85.0
-offset_top = 216.0
-offset_right = 387.0
-offset_bottom = 231.0
+offset_left = 129.0
+offset_top = 234.0
+offset_right = 453.0
+offset_bottom = 259.0
 theme = ExtResource("1_n0vkn")
 theme_override_styles/fill = SubResource("StyleBoxFlat_7tera")
 value = 10.0
@@ -49,28 +61,28 @@ show_percentage = false
 
 [node name="Label" type="Label" parent="hungerBar"]
 layout_mode = 0
-offset_left = 141.0
-offset_top = 1.0
-offset_right = 235.0
-offset_bottom = 27.0
-theme_override_font_sizes/font_size = 8
+offset_left = 149.0
+offset_top = 4.0
+offset_right = 243.0
+offset_bottom = 30.0
+theme_override_font_sizes/font_size = 12
 text = "Hunger"
 
 [node name="Label" type="Label" parent="."]
-offset_left = 206.0
-offset_top = 14.0
-offset_right = 263.0
-offset_bottom = 40.0
-theme_override_font_sizes/font_size = 15
+offset_left = 232.0
+offset_top = 20.0
+offset_right = 308.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 20
 text = "Score: 0"
 
 [node name="Pause" type="Panel" parent="."]
 process_mode = 3
 visible = false
-offset_left = 106.0
-offset_top = 60.0
-offset_right = 385.0
-offset_bottom = 210.0
+offset_left = 151.0
+offset_top = 81.0
+offset_right = 430.0
+offset_bottom = 231.0
 
 [node name="Quit" type="Button" parent="Pause"]
 process_mode = 3
@@ -95,47 +107,83 @@ text = "Resume"
 [node name="EndGame" type="Panel" parent="."]
 process_mode = 3
 visible = false
-offset_left = 107.0
-offset_top = 60.0
-offset_right = 385.0
-offset_bottom = 210.0
+offset_left = 157.0
+offset_top = 89.0
+offset_right = 435.0
+offset_bottom = 239.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_5k1ou")
 
 [node name="Play Again" type="Button" parent="EndGame"]
 process_mode = 3
-offset_left = 85.0
-offset_top = 87.0
-offset_right = 190.0
-offset_bottom = 113.0
+layout_mode = 0
+offset_left = 88.0
+offset_top = 83.0
+offset_right = 193.0
+offset_bottom = 109.0
 theme_override_font_sizes/font_size = 13
 text = "Play Again"
 
 [node name="Quit" type="Button" parent="EndGame"]
 process_mode = 3
-offset_left = 86.0
+layout_mode = 0
+offset_left = 89.0
 offset_top = 117.0
-offset_right = 191.0
+offset_right = 194.0
 offset_bottom = 143.0
 theme_override_font_sizes/font_size = 13
 text = "Quit"
 
-[node name="HighScore" type="Label" parent="EndGame"]
-offset_left = 91.0
-offset_top = 18.0
-offset_right = 181.0
-offset_bottom = 44.0
-theme_override_font_sizes/font_size = 15
-text = "HighScore: 0"
-
 [node name="EndScore" type="Label" parent="EndGame"]
-offset_left = 105.0
-offset_top = 42.0
-offset_right = 195.0
-offset_bottom = 68.0
+layout_mode = 0
+offset_left = 107.0
+offset_top = 33.0
+offset_right = 197.0
+offset_bottom = 59.0
 theme_override_font_sizes/font_size = 15
 text = "Score: 0"
+
+[node name="HowToPlay" type="Panel" parent="."]
+process_mode = 3
+offset_left = 110.0
+offset_top = 52.0
+offset_right = 458.0
+offset_bottom = 248.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_l77yr")
+
+[node name="Ready" type="Button" parent="HowToPlay"]
+process_mode = 3
+layout_mode = 0
+offset_left = 121.0
+offset_top = 151.0
+offset_right = 226.0
+offset_bottom = 177.0
+theme_override_font_sizes/font_size = 13
+text = "Ready!"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HowToPlay"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 10.0
+offset_right = 332.0
+offset_bottom = 139.0
+theme_override_font_sizes/normal_font_size = 13
+text = "As a vampire you have to get away from the sun! But you also grow hungry fast from hte exertion. WASD to move and shift to run. Left click to suck blood from people and resotre hunger!
+Watch out for Angels however, they can't be harmed and will stun you if you get too close!
+(Also P to pause)"
+
+[node name="StanimaBar" type="ProgressBar" parent="."]
+offset_left = 19.0
+offset_top = 254.0
+offset_right = 228.0
+offset_bottom = 259.0
+rotation = -1.5708
+theme_override_styles/fill = SubResource("StyleBoxFlat_mgxhs")
+max_value = 15.0
+value = 15.0
+show_percentage = false
 
 [connection signal="pressed" from="Pause/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="Pause/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="EndGame/Play Again" to="." method="_on_play_again_pressed"]
 [connection signal="pressed" from="EndGame/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="HowToPlay/Ready" to="." method="_on_ready_pressed"]
