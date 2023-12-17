@@ -6,7 +6,7 @@ extends Node3D
 
 var sunSpeed = 0.17
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	sun.position.z += sunSpeed
 	

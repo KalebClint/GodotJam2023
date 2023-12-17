@@ -17,6 +17,7 @@ extends CharacterBody3D
 @onready var casta = $VampireMesh/Casta
 
 @onready var pauseMenu = $PlayerUI/Pause
+@onready var stanimaBar = $PlayerUI/StanimaBar
 
 var score = 0
 
@@ -56,6 +57,15 @@ func _ready():
 	score = 0
 
 func _physics_process(delta):
+	
+	if sprinting == true || stanima < 15:
+		stanimaBar.show()
+	else:
+		stanimaBar.hide()
+	
+	stanimaBar.value = stanima
+	
+	
 	
 	zLevel = position.z
 	
@@ -103,7 +113,7 @@ func _physics_process(delta):
 			sprinting = false
 			
 	else:
-		if stanima < 10:
+		if stanima < 15.03:
 			stanima += 0.03
 			
 	if stanima >= 10:
@@ -135,11 +145,11 @@ func _physics_process(delta):
 	if input_dir == Vector2.ZERO && is_on_floor():
 		sprinting = false
 
-	$AnimationTree.set("parameters/conditions/idle", input_dir == Vector2.ZERO && is_on_floor() && !attacking)
-	$AnimationTree.set("parameters/conditions/walk", !sprinting && input_dir != Vector2.ZERO && is_on_floor() && !attacking)
-	$AnimationTree.set("parameters/conditions/run", sprinting && is_on_floor() && !attacking)
-	$AnimationTree.set("parameters/conditions/jump", !is_on_floor() && !attacking)
-	$AnimationTree.set("parameters/conditions/attack", attacking)
+	$AnimationTree.set("parameters/conditions/idle", input_dir == Vector2.ZERO && is_on_floor() && !attacking && !playerStunned)
+	$AnimationTree.set("parameters/conditions/walk", !sprinting && input_dir != Vector2.ZERO && is_on_floor() && !attacking && !playerStunned)
+	$AnimationTree.set("parameters/conditions/run", sprinting && is_on_floor() && !attacking && !playerStunned)
+	$AnimationTree.set("parameters/conditions/jump", !is_on_floor() && !attacking && !playerStunned)
+	$AnimationTree.set("parameters/conditions/attack", attacking && !playerStunned)
 	
 	
 	if input_dir != Vector2.ZERO:

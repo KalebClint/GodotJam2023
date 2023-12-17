@@ -37,7 +37,7 @@ func _ready():
 		walking = true
 		walkToNextPoint()
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	var currentLocation = global_transform.origin
 	var next_location = navAgent.get_next_path_position()
 	var newVelocity = (next_location - currentLocation).normalized() * speed

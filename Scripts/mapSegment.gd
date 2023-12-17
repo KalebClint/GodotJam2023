@@ -14,7 +14,7 @@ func _ready():
 	if rand < 7:
 		deployBlockade()
 
-func _process(delta):
+func _process(_delta):
 	var playerPosition = player.global_transform.origin
 	var objectPosition = global_transform.origin
 
@@ -34,9 +34,10 @@ func deployCone(amount):
 	if amount != 0:
 		while index != amount:
 			var _cone = cone.instantiate()
+			add_child(_cone)
 			_cone.global_position = global_position
 			_cone.global_position.y += 0.2
-			add_child(_cone)
+
 			_cone.global_position.x += randf_range(6,-6)
 			_cone.global_position.z += randf_range(65,-65)
 			index += 1
@@ -44,8 +45,8 @@ func deployCone(amount):
 func deployBlockade():
 	
 	var _blockade = blockade.instantiate()
+	add_child(_blockade)
 	_blockade.global_position = global_position
 	_blockade.global_position.y += 0.2
-	add_child(_blockade)
 	_blockade.global_position.x += randf_range(3,-3)
 	_blockade.global_position.z += randf_range(65,-65)
