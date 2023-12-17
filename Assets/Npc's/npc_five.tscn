@@ -1,8 +1,10 @@
-[gd_scene load_steps=59 format=3 uid="uid://c5d4uwtd3tly2"]
+[gd_scene load_steps=61 format=3 uid="uid://c5d4uwtd3tly2"]
 
 [ext_resource type="Script" path="res://Scripts/npcOne.gd" id="1_mqvg8"]
 [ext_resource type="Texture2D" uid="uid://cy25wj50dn723" path="res://Assets/Npc's/imports/Human_2_Hpants 1.png" id="2_tfbin"]
 [ext_resource type="Texture2D" uid="uid://b0txdm4e23wna" path="res://Assets/Npc's/imports/Human_2_Hbody 1.png" id="3_mifx2"]
+[ext_resource type="AudioStream" uid="uid://5ecw4kukvtiw" path="res://Assets/Audio/SFX/NPC_Scream/GWJ64SFX_Male_Scream_001.ogg" id="4_1qpl2"]
+[ext_resource type="AudioStream" uid="uid://ch1emhh4i8pe7" path="res://Assets/Audio/SFX/Footsteps/GWJ64SFX_FootStep_001.ogg" id="4_kptpw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n30ru"]
 size = Vector3(1, 2.23351, 0.73461)
@@ -2649,6 +2651,21 @@ tracks/65/path = NodePath("metarig/Skeleton3D:thumb.01.L")
 tracks/65/interp = 1
 tracks/65/loop_wrap = true
 tracks/65/keys = PackedFloat32Array(0, 1, -0.196869, 0.509003, 0.373835, 0.749937)
+tracks/66/type = "audio"
+tracks/66/imported = false
+tracks/66/enabled = true
+tracks/66/path = NodePath("AudioStreamPlayer")
+tracks/66/interp = 1
+tracks/66/loop_wrap = true
+tracks/66/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_1qpl2")
+}],
+"times": PackedFloat32Array(0.3)
+}
+tracks/66/use_blend = true
 
 [sub_resource type="Animation" id="Animation_i1vf0"]
 resource_name = "run-loop"
@@ -3116,6 +3133,69 @@ tracks/65/path = NodePath("metarig/Skeleton3D:thumb.01.L")
 tracks/65/interp = 1
 tracks/65/loop_wrap = true
 tracks/65/keys = PackedFloat32Array(0, 1, -0.196869, 0.509003, 0.373835, 0.749937)
+tracks/66/type = "audio"
+tracks/66/imported = false
+tracks/66/enabled = true
+tracks/66/path = NodePath("AudioStreamPlayer")
+tracks/66/interp = 1
+tracks/66/loop_wrap = true
+tracks/66/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_kptpw")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_kptpw")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_kptpw")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_kptpw")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_kptpw")
+}, {
+"end_offset": 0.85,
+"start_offset": 0.0,
+"stream": ExtResource("4_kptpw")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_kptpw")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_kptpw")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_kptpw")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_kptpw")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_kptpw")
+}, {
+"end_offset": 0.85,
+"start_offset": 0.0,
+"stream": ExtResource("4_kptpw")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_kptpw")
+}],
+"times": PackedFloat32Array(0.2, 0.8, 1.2, 1.7, 2.2, 2.7, 3.2, 3.7, 4.1, 4.5, 4.9, 5.3, 5.6671)
+}
+tracks/66/use_blend = true
 
 [sub_resource type="Animation" id="Animation_jppir"]
 resource_name = "shocked_type1"
@@ -4131,7 +4211,7 @@ bones/5/parent = 4
 bones/5/rest = Transform3D(1, 0, 0, 0, 0.982004, 0.18886, 0, -0.18886, 0.982004, 0, 0.0749853, 1.67638e-08)
 bones/5/enabled = true
 bones/5/position = Vector3(0, 0.0749853, 1.67638e-08)
-bones/5/rotation = Quaternion(-0.0857831, 0, 0, 0.996314)
+bones/5/rotation = Quaternion(-0.0809352, 0, 0, 0.996719)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "spine.006"
 bones/6/parent = 5
@@ -4530,7 +4610,7 @@ bones/62/parent = 61
 bones/62/rest = Transform3D(-1, 1.47261e-07, 1.00081e-07, 5.39972e-08, 0.786447, -0.617658, -1.69665e-07, -0.617658, -0.786447, 5.00476e-10, 0.157943, 6.16597e-09)
 bones/62/enabled = true
 bones/62/position = Vector3(5.00476e-10, 0.157943, 6.16597e-09)
-bones/62/rotation = Quaternion(-0.00242426, 0.938969, -0.343923, 0.00701186)
+bones/62/rotation = Quaternion(-0.0028569, 0.937835, -0.346971, 0.00826321)
 bones/62/scale = Vector3(1, 1, 1)
 bones/63/name = "heel.02.L"
 bones/63/parent = 61
@@ -4643,6 +4723,8 @@ skin = SubResource("Skin_bd8xh")
 libraries = {
 "": SubResource("AnimationLibrary_xy3ag")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
