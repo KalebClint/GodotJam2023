@@ -14,10 +14,9 @@ var carryingBlood = false
 var chasing = false
 var attacking = false
 
-
 var withPlayer = false
 
-var speed = 13
+var speed = 15
 
 func _physics_process(delta):
 	var currentLocation = global_transform.origin

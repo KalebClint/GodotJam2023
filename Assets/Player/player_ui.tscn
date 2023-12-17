@@ -31,8 +31,8 @@ script = ExtResource("1_f4gvh")
 
 [node name="illBar" type="ProgressBar" parent="."]
 offset_left = 129.0
-offset_top = 271.0
-offset_right = 453.0
+offset_top = 275.0
+offset_right = 445.0
 offset_bottom = 295.0
 theme = ExtResource("1_n0vkn")
 min_value = 50.0
@@ -43,17 +43,17 @@ show_percentage = false
 [node name="Label" type="Label" parent="illBar"]
 layout_mode = 0
 offset_left = 137.0
-offset_top = 3.0
+offset_top = 2.0
 offset_right = 231.0
-offset_bottom = 29.0
+offset_bottom = 28.0
 theme_override_font_sizes/font_size = 12
 text = "Illumination"
 
 [node name="hungerBar" type="ProgressBar" parent="."]
 offset_left = 129.0
-offset_top = 234.0
-offset_right = 453.0
-offset_bottom = 259.0
+offset_top = 244.0
+offset_right = 445.0
+offset_bottom = 263.0
 theme = ExtResource("1_n0vkn")
 theme_override_styles/fill = SubResource("StyleBoxFlat_7tera")
 value = 10.0
@@ -62,9 +62,9 @@ show_percentage = false
 [node name="Label" type="Label" parent="hungerBar"]
 layout_mode = 0
 offset_left = 149.0
-offset_top = 4.0
+offset_top = 2.0
 offset_right = 243.0
-offset_bottom = 30.0
+offset_bottom = 28.0
 theme_override_font_sizes/font_size = 12
 text = "Hunger"
 
